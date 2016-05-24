@@ -47,5 +47,8 @@ group :development do
 # Gema para el manejo de sesiones
 gem 'devise'
 
+# Gema para usar iconos
+gem 'font-awesome-rails'
+
 end
 
