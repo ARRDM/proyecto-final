@@ -6788,28 +6788,57 @@ button.close {
     display: none !important;
   }
 }
-@letra U: "Ubuntu"
-@gris: #555766;
 body {
-  font-size: 20px;
+  font-size: 15px;
+  background-color: #13BF8D;
+  font-family: "Ubuntu";
+}
+.fondo-crema {
+  background-color: #FAFBFF;
+}
+.gris {
+  background-color: #555766;
+}
+.boton-salmon {
+  background-color: #FF7664;
+  color: #FAFBFF;
+}
+.salmon {
+  color: #FF7664;
+  text-align: center;
+  font-family: "Ubuntu";
+}
+.crema {
+  color: #FAFBFF;
+}
+.green {
+  color: #13BF8D;
+}
+.titulo {
+  font-size: 4em;
+  color: #FAFBFF;
+  text-shadow: 3px 3px 5px #555766;
+}
+.shadow {
+  box-shadow: 3px 3px 5px #555766;
 }
 @media (min-width: 1200px) {
   body {
-    font-size: 20px;
+    font-size: 15px;
   }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   body {
-    font-size: 20px;
+    font-size: 15px;
   }
 }
 @media (max-width: 991px) {
   body {
-    font-size: 17px;
+    font-size: 12px;
   }
 }
 @media (max-width: 767px) {
   body {
-    font-size: 15px;
+    font-size: 10px;
   }
 }

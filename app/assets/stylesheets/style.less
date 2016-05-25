@@ -1,0 +1,77 @@
+@import "less/bootstrap.less";
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700,300,500);
+
+
+
+@letraU: "Ubuntu";
+@gris: #555766;
+@verde: #13BF8D;
+@crema: #FAFBFF;
+@azul: #4170D8;
+@salmon: #FF7664;
+body{
+	font-size: 15px;
+	background-color: @verde;
+	font-family: "Ubuntu";
+}
+
+.fondo-crema{
+	background-color: @crema;
+}
+
+.gris{
+	background-color: @gris;
+}
+
+.boton-salmon{
+	background-color: @salmon;
+	color: @crema;
+}
+
+.salmon{
+	color: @salmon;
+	text-align: center;
+	font-family: "Ubuntu"
+}
+
+.crema{
+	color: @crema;
+	
+}
+.green{
+	color: @verde;
+}
+.titulo{
+	font-size: 4em;
+	color: @crema;
+	text-shadow: 3px 3px 5px @gris;
+}
+
+.shadow{
+	box-shadow: 3px 3px 5px @gris;
+}
+
+
+@media (min-width: 1200px) {
+	body {
+		font-size: 15px;	
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1199px){
+	body{
+		font-size: 15px;
+	}
+}
+
+@media (max-width: 991px){
+	body{
+		font-size: 12px;
+	}
+}
+
+@media (max-width: 767px){
+	body{
+		font-size: 10px;
+	}
+}

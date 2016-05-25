@@ -44,11 +44,14 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-# Gema para el manejo de sesiones
-gem 'devise'
+	# Gema para el manejo de sesiones
+	gem 'devise'
 
-# Gema para usar iconos
-gem 'font-awesome-rails'
+	# Gema para usar iconos
+	gem 'font-awesome-rails'
+
+	# Gema para agregar imágenes
+	gem 'carrierwave'
 
 end
 
