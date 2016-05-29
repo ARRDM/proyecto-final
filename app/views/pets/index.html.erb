@@ -1,28 +1,30 @@
-<p id="notice"><%= notice %></p>
-<div class="row">
-  <div class="col-md-12 text-center">
-    <h1 class="titulo">Mascotas en adopción</h1>  
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h1 class="titulo">Mascotas en adopción</h1>  
+    </div>
   </div>
-</div>
-<br>
-<div class="row">
-  <% @pets.each do |pet| %>
-    <div class="col-md-3">
-      <div class="thumbnail shadow">
-        <%= image_tag(pet.image_url, class:"img-rounded") %>
-        <div class="caption">
-          <h2 class="text-center"><%= pet.name %></h2>
-          <h4>Raza: <span style="font-size: 15px;"><%= pet.breed %></span> </h4>
-          <h4>Tamaño: <span style="font-size: 15px;"><%= pet.size %></span></h4>
-          <h4>Edad: <span style="font-size: 15px;"><%= pet.age %></span></h4>
-          <h4>Género: <span style="font-size: 15px;"><%= pet.gender %></span></h4>
-          <%= link_to "Conóceme",pet, class:"btn btn-block boton-salmon"%>
+  <br>
+  <div class="row">
+    <% @pets.each do |pet| %>
+      <div class="col-md-3 col-sm-6">
+        <div class="thumbnail shadow">
+          <%= image_tag(pet.image_url, class:"img-rounded") %>
+          <div class="caption">
+            <h2 class="text-center"><%= pet.name %></h2>
+            <h4>Raza: <span style="font-size: 15px;"><%= pet.breed %></span> </h4>
+            <h4>Tamaño: <span style="font-size: 15px;"><%= pet.size %></span></h4>
+            <h4>Edad: <span style="font-size: 15px;"><%= pet.age %></span></h4>
+            <h4>Género: <span style="font-size: 15px;"><%= pet.gender %></span></h4>
+            <%= link_to "Conóceme",pet, class:"btn btn-block boton-salmon"%>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+
+  <br>
+
+  <%= link_to 'New Pet', new_pet_path %>
 </div>
-
-<br>
-
-<%= link_to 'New Pet', new_pet_path %>
