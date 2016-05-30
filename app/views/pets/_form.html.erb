@@ -1,55 +1,83 @@
-<%= form_for(@pet) do |f| %>
-  <% if @pet.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@pet.errors.count, "error") %> prohibited this pet from being saved:</h2>
-      <ul>
-      <% @pet.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for(@pet) do |f| %>
+      <% if @pet.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@pet.errors.count, "error") %> prohibited this pet from being saved:</h2>
+          <ul>
+          <% @pet.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="field">
+          <h3>Nombre de la mascota</h3>
+          <%= f.text_field :name, class:"form-control" %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="field">
+          <h3>Raza</h3>
+          <%= f.text_field :breed, class:"form-control" %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="field">
+          <h3>Color de pelo</h3>
+          <%= f.text_field :hair, class:"form-control" %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="field">
+          <h3>Edad</h3>
+            <%= f.select(:age, options_for_select([['Menos de 1 año', 'Menos de 1 año'], ['1 año', '1 año'], ['2 años', '2 años'], ['3 años', '3 años'], ['4 años', '4 años'], ['5 años', '5 años'], ['6 años', '6 años'], ['7 años', '7 años'], ['8 años', '8 años'], ['9 años', '9 años'], ['10 años', '10 años'], ['11 años', '11 años'], ['12 años', '12 años'], ['13 años', '13 años'], ['14 años', '14 años'], ['15 años', '15 años']], @pet.age), {},{class:"form-control"}) %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="field">
+          <h3>Sexo</h3>
+          <%= f.select(:gender, options_for_select([['Macho', 'Macho'], ['Hembra', 'Hembra']],@pet.gender), {},{class:"form-control"}) %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="field">
+          <h3>Tamaño</h3>
+          <%= f.select(:size, options_for_select([['Mini', 'Mini'], ['Pequeño', 'Pequeño'], ['Mediano', 'Mediano'], ['Grande', 'Grande'], ['Muy grande', 'Muy grande']], @pet.size), {},{class:"form-control"}) %>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="field">
+          <h3>Descripción</h3>
+          <%= f.text_area :description, class:"form-control" %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="field">
+          <h3>Foto</h3><br>
+          <%= f.file_field :image %>
+        </div>  
+      </div>
     </div>
-  <% end %>
-  
-  <div class="field">
-    <%= f.hidden_field :user_id, :value => current_user.id %>
+          
+          <div class="field">
+            <%= f.hidden_field :user_id, :value => current_user.id %>
+          </div>
+          <div class="field">
+            <%= f.hidden_field :status, :value => false %>
+          </div>
+    <div class="row">
+      <div class="col-md-12 text-left">
+        <br>
+          <div class="actions">
+            <%= f.submit "Publicar", class:"btn btn-lg btn-block boton-salmon" %>
+          </div>
+        
+      </div>
+    </div>
+
+        <% end %>
   </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :breed %><br>
-    <%= f.text_field :breed %>
-  </div>
-  <div class="field">
-    <%= f.label :hair %><br>
-    <%= f.text_field :hair %>
-  </div>
-  <div class="field">
-    <%= f.label :age %><br>
-    <%= f.text_field :age %>
-  </div>
-  <div class="field">
-    <%= f.label :gender %><br>
-    <%= f.text_field :gender %>
-  </div>
-  <div class="field">
-    <%= f.label :size %><br>
-    <%= f.text_field :size %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.check_box :status %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.file_field :image %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

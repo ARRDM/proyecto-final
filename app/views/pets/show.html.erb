@@ -7,21 +7,26 @@
       <div class="well">
         <div class="row">
           <div class="col-md-4">
-            <%= image_tag(@pet.image_url, class:"img-responsive img-circle") %>
-            <br>
             <div class="row">
-              <div class="col-md-12">
-                <% if @pet.status %>
-                <% else %>
-                <%= link_to "¡Adóptame!", pets_path, class:"btn btn-block boton-salmon" %>
-                <% end %>
+              <div class="col-md-8 col-md-offset-2">
+                <%= image_tag(@pet.image_url, class:"img-responsive img-circle") %>
+                <br>
+              </div>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <h1><%= @pet.name %></h1>
+                  <br>
+                  <% if @pet.status %>
+                  <% else %>
+                  <%= link_to "¡Adóptame!", pets_path, class:"btn btn-lg boton-salmon" %>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
           <div class="col-md-8">
             <div class="row">
               <div class="col-md-12">
-                <h1 class="text-center"><%= @pet.name %></h1>
                 <div class="row">
                   <div class="col-md-4">
                     <h3>Raza: </h3>
@@ -56,8 +61,15 @@
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <h2>Acerca de <%= @pet.name %>:</h2>
+                    <h3>Acerca de <%= @pet.name %>:</h3>
                     <p><%= @pet.description %></p>
+                  </div>
+                  <div class="col-md-12">
+                    <% if @pet.user == current_user %>
+                    <h3>Registrado por: <%= link_to @pet.user.email, profile_index_path  %></h3>
+                    <% else %>
+                    <h3>Registrado por: <%= link_to @pet.user.email, profile_path(@pet.user)  %></h3>
+                    <% end %>
                   </div>
                 </div>
               </div>

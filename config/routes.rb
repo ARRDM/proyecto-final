@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'profile/index'
+  get 'profile/show'
+  resources :profile
   resources :pets
   devise_for :users
   root 'welcome#home'
