@@ -18,8 +18,7 @@
               <%= f.email_field :email,placeholder: "Email", autofocus: true, class:"form-control" %>
             </div>
   	      <div class="actions">
-		<br>
-    		<%= f.submit "Mandar instrucciones para obtener una nueva contraseña" %>
+    		<%= f.submit "Send me reset password instructions" %>
   	      </div>
 	  <% end %>
 <!--
