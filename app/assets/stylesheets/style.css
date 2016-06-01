@@ -6793,6 +6793,9 @@ body {
   background-color: #13BF8D;
   font-family: "Ubuntu";
 }
+.navbar-brand {
+  padding: 5px 15px;
+}
 .fondo-crema {
   background-color: #FAFBFF;
 }
