@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160529162925) do
+ActiveRecord::Schema.define(version: 20160604152935) do
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "pet_id"
+    t.integer  "petitioner"
+    t.integer  "owner"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "text"
+    t.string   "status"
+  end
+
+  add_index "messages", ["pet_id"], name: "index_messages_on_pet_id"
 
   create_table "pets", force: :cascade do |t|
     t.string   "name"
@@ -21,7 +33,7 @@ ActiveRecord::Schema.define(version: 20160529162925) do
     t.string   "gender"
     t.string   "size"
     t.text     "description"
-    t.boolean  "status"
+    t.string   "status"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "image"
@@ -30,6 +42,18 @@ ActiveRecord::Schema.define(version: 20160529162925) do
   end
 
   add_index "pets", ["user_id"], name: "index_pets_on_user_id"
+
+  create_table "texts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "message_id"
+    t.boolean  "read"
+  end
+
+  add_index "texts", ["message_id"], name: "index_texts_on_message_id"
+  add_index "texts", ["user_id"], name: "index_texts_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

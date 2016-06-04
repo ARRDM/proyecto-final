@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Messages</h1>
+
+<table>
+  <thead>
+
+    <tr>
+      <th>Usuario</th>
+      <th>Mascota</th>
+      <th>Mensaje</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @messages.each do |message| %>
+      <% if current_user.id != message.petitioner %>
+        <% user = User.find(message.petitioner) %>
+      <% else %>
+        <% user = User.find(message.owner) %>
+      <% end %>
+        <% pet = Pet.find(message.pet_id) %>
+        <tr>
+          <td><%= user.email %></td>
+          <td><%= pet.name %></td>
+          <td><%= message.text %></td>
+          <td><%= link_to 'Show', message %></td>
+          <td><%= link_to 'Edit', edit_message_path(message) %></td>
+          <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Message', new_message_path %>

@@ -1,0 +1,33 @@
+<%= form_for(@message) do |f| %>
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+      <ul>
+      <% @message.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.text_area :text, placeholder: "Tu mensaje aquí", class:"form-control" %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :status, :value => false %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :petitioner, :value => current_user.id %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :owner, :value => @user.id %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :pet_id, :value => @pet.id %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

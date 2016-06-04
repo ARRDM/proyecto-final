@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'profile/index'
   get 'profile/show'
+  resources :messages
   resources :profile
   resources :pets
   devise_for :users

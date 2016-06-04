@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pet_id: 
+  petitioner: 1
+  owner: 1
+
+two:
+  pet_id: 
+  petitioner: 1
+  owner: 1
