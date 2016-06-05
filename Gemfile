@@ -28,7 +28,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'geokit-rails'
 gem 'geocoder'
 gem 'gmaps4rails'
-gem 'gmaps4rails'
+# Use to connect with facebook
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
