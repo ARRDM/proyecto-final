@@ -40,22 +40,23 @@
                 <%= f.label "Teléfono" %><br />
                 <%= f.text_field :phone, autofocus: true, class:"form-control" %>
               </div>
-              <br>
-              <div class="field">
-                <%= f.label :email %><br />
-                <%= f.email_field :email, autofocus: true, placeholder:"ejemplo@pets.com", class:"form-control" %>
+         <br>
+         <div class="field">
+           <%= f.label :email %><br />
+           <%= f.email_field :email, autofocus: true, placeholder:"ejemplo@pets.com", class:"form-control" %>
+         </div>
+	 <br/>
+	 <div class="field">
+	   <%= f.label "Dirección, entre más simple mucho mejor. (Calle, Municipio, Estado)" %><br />
+		<%= f.text_field :address, autocomplete: "off", placeholder:"Ej: División del Norte, Coyoacán, Ciudad de México", class:"form-control" %>
               </div>
+		      <br>	      
               <br>
               <div class="field">
                 <%= f.label "Contraseña" %>
                 <%= f.password_field :password, autocomplete: "off", placeholder:"8 caracteres mínimo",class:"form-control" %>
               </div>
               <br>
-	      <div class="field">
-		<%= f.label "Dirección (Calle, Municipio, Estado)" %><br />
-		<%= f.text_field :address, autocomplete: "off", placeholder:"Ej: División del Norte, Coyoacán, Ciudad de México", class:"form-control" %>
-              </div>
-              <br>	      
               <div class="field">
                 <%= f.label "Confirma tu contraseña" %><br />
                 <%= f.password_field :password_confirmation, autocomplete: "off", placeholder:"Confirma la contraseña", class:"form-control" %>

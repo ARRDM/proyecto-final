@@ -16,7 +16,8 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @pet = Pet.find(params[:id])
-    @user = User.find(@pet.user_id)
+    @user = User.find_by_id(@pet.user_id)
+    PostMailer.UserMailer(@user.email,current_user.user_name,current_user.email,current_user.phone,@user.user_name).deliver_now
     @message = Message.new
   end
 

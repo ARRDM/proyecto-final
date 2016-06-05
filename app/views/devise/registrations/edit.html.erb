@@ -4,12 +4,12 @@
 <%= devise_error_messages! %>
 
 <div class="field">
-  <%= f.label :address %> <i>(leave blank if you don't want to change it)</i><br />
+  <%= f.label "Dirección, entre más simple mucho mejor. (Calle, Municipio, Estado). Ej: Libertad 310, Balancán, Tabasco" %> <i>Si se deja en blanco, no se actualizará.</i><br />
   <%= f.text_field :address, autocomplete: "off" %>
 </div>
 
 <div class="field">
-  <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+  <%= f.label "Contraseña actual:" %> <i>Es necesario que ingrese su contraseña actual como medida de seguridad</i><br />
   <%= f.password_field :current_password, autocomplete: "off" %>
 </div>
 
