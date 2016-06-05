@@ -29,7 +29,6 @@
             <% else %>
             <li><%= link_to 'Regístrate', new_user_registration_path %></li>
             <li><%= link_to 'Inicia sesión', new_user_session_path %></li>
-	    <li><%= link_to 'Iniciar sesión con Facebook', user_omniauth_authorize_path(:facebook) %></li>
             <% end %>
           </ul>
         </div><!-- /.navbar-collapse -->
