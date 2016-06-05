@@ -1,5 +1,6 @@
+# coding: utf-8
+# coding: utf-8
 source 'https://rubygems.org'
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
@@ -13,7 +14,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
+#gem para generar scaffolt a mi gusto.
+gem "nifty-generators", :group => :development
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -22,7 +24,11 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
+#Geolocalización en una gema! Genial! :D
+gem 'geokit-rails'
+gem 'geocoder'
+gem 'gmaps4rails'
+gem 'gmaps4rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -55,3 +61,5 @@ group :development do
 
 end
 
+
+gem 'mocha', group: :test

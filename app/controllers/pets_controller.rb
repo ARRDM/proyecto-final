@@ -1,3 +1,4 @@
+# coding: utf-8
 class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
 
@@ -5,6 +6,37 @@ class PetsController < ApplicationController
   # GET /pets.json
   def index
     @pets = Pet.all
+    if (params[:aname] != "" && params[:aname] != nil)  ||
+       (params[:abreed] != "" && params[:abreed] != nil) ||
+       (params[:ahair] != "" && params[:ahair] != nil) ||
+       (params[:aage] != "" && params[:aage] != nil) ||
+       (params[:agender] != "" && params[:agender] != nil) ||
+       (params[:asize] != "" && params[:asize] != nil) ||
+       (params[:adescription] != "" && params[:adescription] != nil)
+      @pets = Pet.all.order('created_at ASC')
+      @pets = Pet.busqueda_avanzada(params[:aname],params[:abreed],params[:ahair],params[:aage],params[:agender],params[:asize], params[:adescription])
+      if params[:aradio] != ""
+        @pets = Pet.search_distance(@pets,params[:aradio],params[:lat2],params[:lng2])
+      end
+
+    else
+      
+      if params[:search]      
+        @pets = Pet.search(params[:search]).order("created_at ASC")
+      else
+        @pets = Pet.all.order('created_at ASC')
+      end
+      if (params[:search_distance] != "" && params[:search_distance] != nil)
+        @pets = Pet.search_distance(@pets,params[:search_distance],params[:lat],params[:lng])
+      else
+      end
+      if (params[:latitude] != "" && params[:latitude] != nil)
+        @pets = Pet.ordena(@pets,params[:latitude],params[:longitude])
+      end
+    end
+    
+    
+    @hash = @pets.map {|a| {lat: a.user.latitude, lng: a.user.longitude, infowindow: "Aquí vive:"+a.name + " \n Edad:"+ a.age } }
   end
 
   # GET /pets/1
