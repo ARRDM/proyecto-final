@@ -23,6 +23,29 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = current_user
+  end
+
+  def update_password
+    @user = User.find(current_user.id)
+    if @user.update(user_params)
+      # Sign in the user by passing validation in case their password changed
+      sign_in @user, :bypass => true
+      redirect_to profile_index_path
+    else
+      render "edit"
+    end
+  end
+
+  def update_address
+    @user = User.find(current_user.id)
+    if @user.update(user_params)
+      # Sign in the user by passing validation in case their password changed
+      sign_in @user, :bypass => true
+      redirect_to @user
+    else
+      redirect_to root_path
+    end
   end
 
   # POST /users
@@ -73,6 +96,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.fetch(:user, {})
+      # NOTE: Using `strong_parameters` gem
+      params.require(:user).permit(:address,:password, :password_confirmation)
     end
 end

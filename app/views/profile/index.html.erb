@@ -12,13 +12,33 @@
 							<%= image_tag('default-profile.jpg', class:"img-responsive img-circle") %>
 						<% end %>
 						<br>
-						<h3><%= @user.user_name + " " + @user.user_lastname_p %></h3>
+						<h3><%= @user.user_name.to_s + " " + @user.user_lastname_p.to_s %></h3>
 						<h3><%= @user.email %></h3>
 						<hr>
 						<div class="row">
 							<div class="col-md-12 text-left">
-								<h4>Vive en: <%= @user.address %></h4>
-								<h4>Miembro desde: <%= @user.created_at.to_date %></h4>
+							  <h4>Vive en:
+							    <% if @user.address == nil || @user.address == "" %>
+							    
+ 							    <%= link_to "Actualiza dirección (Primero debe crear su contraseña)", edit_user_registration_path %>
+							    <%= form_for(@user, :url => { :action => "update_password", :controller => "users" } ) do |f| %>
+							    <div class="field">
+							      <%= f.label :password, "Contraseña" %><br />
+							      <%= f.password_field :password, :autocomplete => "off"  %>
+							    </div>
+							    <div class="field">
+							      <%= f.label :password_confirmation %><br />
+							      <%= f.password_field :password_confirmation %>
+							    </div>
+							    <div class="action_container">
+							      <%= f.submit "Crear contraseña" %>
+							    </div>
+							    <% end %>
+							    <% else %>
+							    <%= @user.address %></h4>
+							  <%= link_to "Actualiza dirección o elimina tu cuenta", edit_user_registration_path %>
+							  <% end %>
+							  <h4>Miembro desde: <%= @user.created_at.to_date %></h4>
 								<h4>Mascotas registradas: </h4>
 								<%= link_to 'Nueva publicación', new_pet_path, class:"btn btn-block boton-salmon" %> 
 							</div>

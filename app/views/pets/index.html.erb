@@ -73,6 +73,7 @@
 		      <%= text_field_tag :adescription, params[:adescription], placeholder: "Descripcion", class:"form-control" %>
 		    </div> 
 		  </div>
+		  <% if current_user != nil %>
 		  <div class="form-group">
 		    <label class="sr-only" for="exampleInputAmount">Radio de búsqueda en Km:</label>
 		    <div class="input-group">
@@ -81,7 +82,7 @@
 		  </div>
 		  <%= hidden_field_tag :lat2, current_user.latitude %>
 		  <%= hidden_field_tag :lng2, current_user.longitude %>
-		  
+		  <% end %>
 		  <div class="modal-footer">
 		    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 		    <%= submit_tag "Buscar a mi perrito", class:"btn btn-primary" %>		    
@@ -90,17 +91,21 @@
 	      </div>
 	    </div>
 	  </div>
-	  <% end %> 
+	  <% end %>
+	  <% if current_user != nil %>
 	  <%= link_to "Organizar por distancia", :latitude => current_user.latitude, :longitude => current_user.longitude %>
+	  <% end %>
 	  <br/>
 	  <br/>
 	  <%= link_to "Organizar por fecha" %>
+	  <% if current_user != nil %>
 	  <%= form_tag(pets_path, :method => "get", id: "search_distance-form") do %>
 	  <%= number_field_tag :search_distance, params[:search_distance], placeholder: "Radio de búsqueda km: ∞" %>
 	  <%= hidden_field_tag :lat, current_user.latitude %>
 	  <%= hidden_field_tag :lng, current_user.longitude %>
 	  <%= submit_tag "Cambiar el radio de búsqueda", class:"btn btn-primary btn-lg" %>
-	  <% end %>	  
+	  <% end %>
+	  <% end %>
       </p>
       <br/>
       <br/>
