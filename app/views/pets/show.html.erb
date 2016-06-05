@@ -16,9 +16,11 @@
                 <div class="col-md-12 text-center">
                   <h1><%= @pet.name %></h1>
                   <br>
-                  <% if @pet.requested == true || current_user.id == @pet.user_id %>
-                  <% else %>
-                  <%= link_to "¡Adóptame!", new_message_path(:id => @pet.id), class:"btn btn-lg boton-salmon"  %>
+                  <% if user_signed_in? %>
+                    <% if @pet.requested == true || current_user.id == @pet.user_id %>
+                    <% else %>
+                    <%= link_to "¡Adóptame!", new_message_path(:id => @pet.id), class:"btn btn-lg boton-salmon"  %>
+                    <% end %>
                   <% end %>
                 </div>
               </div>
