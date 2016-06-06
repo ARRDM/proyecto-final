@@ -38,7 +38,8 @@
 							  <%= link_to "Actualiza dirección o elimina tu cuenta", edit_user_registration_path %>
 							  <% end %>
 							  <h4>Miembro desde: <%= @user.created_at.to_date %></h4>
-								<h4>Mascotas registradas: </h4>
+							  <% b = Pet.all.where("user_id = ?", @user).size %>
+								<h4>Mascotas registradas: <%= b %></h4>
 								<%= link_to 'Nueva publicación', new_pet_path, class:"btn btn-block boton-salmon" %> 
 							</div>
 						</div>
