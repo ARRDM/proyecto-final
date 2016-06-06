@@ -12,13 +12,14 @@
 							<%= image_tag('default-profile.jpg', class:"img-responsive img-circle") %>
 						<% end %>
 						<br>
-						<h3><%= @user.user_name + " " + @user.user_lastname_p %></h3>
+						<h3><%= @user.user_name.to_s + " " + @user.user_lastname_p.to_s %></h3>
 						<hr>
 						<div class="row">
 							<div class="col-md-12 text-left">
 								<h4>Vive en: <%= @user.address %></h4>
 								<h4>Miembro desde: <%= @user.created_at.to_date %></h4>
-								<h4>Mascotas registradas: </h4>
+								<% b = Pet.all.where("user_id = ?", @user).size %>
+								<h4>Mascotas registradas: <%= b %></h4>
 							</div>
 						</div>
 					</div>

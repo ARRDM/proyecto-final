@@ -6807,6 +6807,10 @@ body {
   background-color: #FF7664;
   color: #FAFBFF;
 }
+.boton-azul {
+  background-color: #4170D8;
+  color: #FAFBFF;
+}
 .salmon {
   color: #FF7664;
   text-align: center;
@@ -6850,6 +6854,16 @@ section.first {
   background-position: static;
   padding-top: 19em;
   padding-bottom: 5em;
+}
+section.second {
+  background-color: #BCE6EA;
+  padding-top: 3em;
+  padding-bottom: 2em;
+}
+section.third {
+  background-color: #4170D8;
+  padding-top: 3em;
+  padding-bottom: 2em;
 }
 @media (min-width: 1200px) {
   body {

@@ -5,7 +5,7 @@ class PetsController < ApplicationController
   # GET /pets
   # GET /pets.json
   def index
-    @pets = Pet.all
+    #@pets = Pet.all.activos
     if (params[:aname] != "" && params[:aname] != nil)  ||
        (params[:abreed] != "" && params[:abreed] != nil) ||
        (params[:ahair] != "" && params[:ahair] != nil) ||
@@ -87,6 +87,10 @@ class PetsController < ApplicationController
   # DELETE /pets/1
   # DELETE /pets/1.json
   def destroy
+    @message = Message.where(pet_id: @pet.id).first
+    if @message != nil
+      @message.destroy
+    end
     @pet.destroy
     respond_to do |format|
       format.html { redirect_to pets_url, notice: 'Pet was successfully destroyed.' }

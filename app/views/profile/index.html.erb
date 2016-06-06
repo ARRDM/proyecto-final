@@ -13,7 +13,6 @@
 						<% end %>
 						<br>
 						<h3><%= @user.user_name.to_s + " " + @user.user_lastname_p.to_s %></h3>
-						<h3><%= @user.email %></h3>
 						<hr>
 						<div class="row">
 							<div class="col-md-12 text-left">
@@ -39,7 +38,8 @@
 							  <%= link_to "Actualiza dirección o elimina tu cuenta", edit_user_registration_path %>
 							  <% end %>
 							  <h4>Miembro desde: <%= @user.created_at.to_date %></h4>
-								<h4>Mascotas registradas: </h4>
+							  <% b = Pet.all.where("user_id = ?", @user).size %>
+								<h4>Mascotas registradas: <%= b %></h4>
 								<%= link_to 'Nueva publicación', new_pet_path, class:"btn btn-block boton-salmon" %> 
 							</div>
 						</div>

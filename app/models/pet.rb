@@ -1,6 +1,8 @@
 class Pet < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   belongs_to :user
+
+#o  scope :activos, -> {where(requested: false)}
   
   def self.search(search)
     if(search)

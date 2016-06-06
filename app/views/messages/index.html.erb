@@ -33,13 +33,20 @@
                   <% end %>
                     <% pet = Pet.find(message.pet_id) %>
                     <tr>
-                      <td><%= link_to user.user_name + " " + user.user_lastname_p, profile_path(user) %></td>
+                      <td><%= link_to user.user_name.to_s + " " + user.user_lastname_p.to_s, profile_path(user) %></td>
                       <td><%= link_to pet.name, pet_path(pet) %></td>
                       <td><%= message.created_at.to_formatted_s(:long) %></td>
                       <td><%= message.text %></td>
-                      <td><%= link_to 'Show', message %></td>
-                      <td><%= link_to 'Edit', edit_message_path(message) %></td>
-                      <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                      <td><%= link_to 'Ver petición', message %></td>
+                      <% if pet.status == "y" %>
+                        <td><%= link_to 'Aceptada', "#", class:"btn btn-success disabled" %></td>
+                      <% else %>
+                        <% if message.petitioner == current_user.id %>
+                          <td><%= link_to 'Cancelar petición', message, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %></td>
+                        <% else %>
+                          <td><%= link_to 'Rechazar petición', message, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %></td>
+                        <% end %>
+                      <% end %>
                     </tr>
                 <% end %>
               </tbody>

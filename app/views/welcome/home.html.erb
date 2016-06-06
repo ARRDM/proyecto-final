@@ -8,4 +8,50 @@
 		</div>
 	</div>
 </section>
-<h1>Proximamente podrás adoptar el perro de tus sueños</h1>
+<section class="second">
+	<div class="container">
+		<div class="row">			
+			<div class="col-md-6 text-center">
+				<br>
+				<br>
+				<br>
+				<h1 class="title">¿Por qué adoptar?</h1>
+				<h2 class="title">Lee este artículo y convéncete de por qué es la mejor opción</h2>
+				<%= link_to "Lee el artículo", "http://faada.org/por-que-adoptar", class:"btn boton-azul" %>
+			</div>
+			<div class="col-md-6">
+				<%= image_tag("family.jpg", class:"img-responsive") %>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="third">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<h1 class="title">Registrados recientemente</h1>
+				<br>
+			</div>
+			<div class="col-md-12">
+			  <div class="row">
+			    <% @pets.each do |pet| %>
+			      <div class="col-md-3 col-sm-6">
+			        <div class="thumbnail shadow">
+			          <%= image_tag(pet.image_url, class:"img-rounded") %>
+			          <div class="caption">
+			            <h2 class="text-center"><%= pet.name %></h2>
+			            <h4>Raza: <span style="font-size: 15px;"><%= pet.breed %></span> </h4>
+			            <h4>Tamaño: <span style="font-size: 15px;"><%= pet.size %></span></h4>
+			            <h4>Edad: <span style="font-size: 15px;"><%= pet.age %></span></h4>
+			            <h4>Género: <span style="font-size: 15px;"><%= pet.gender %></span></h4>
+			            <%= link_to "Conóceme",pet, class:"btn btn-block boton-salmon"%>
+			          </div>
+			        </div>
+			      </div>
+			    <% end %>
+			  </div>				
+			</div>
+		</div>
+	</div>	
+</section>
+
