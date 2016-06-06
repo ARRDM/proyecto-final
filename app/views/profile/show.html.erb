@@ -18,7 +18,8 @@
 							<div class="col-md-12 text-left">
 								<h4>Vive en: <%= @user.address %></h4>
 								<h4>Miembro desde: <%= @user.created_at.to_date %></h4>
-								<h4>Mascotas registradas: </h4>
+								<% b = Pet.all.where("user_id = ?", @user).size %>
+								<h4>Mascotas registradas: <%= b %></h4>
 							</div>
 						</div>
 					</div>

@@ -13,17 +13,28 @@
   <div class="row">
     <div class="col-md-12 text-center">
       <h1 class="titulo">Mascotas en adopción</h1>
+      <din class="row">
+      	<div class="col-md-12 center-block text-center">
+      		
       <p>
 	<div style='width: 800px;'>
 	  <div id="map" style='width: 800px; height: 400px;'>
 	  </div>
 	  <br/>
 	  <br/>
+
 	  <%= form_tag(pets_path, :method => "get", id: "search-form") do %>
-	  <%= text_field_tag :search, params[:search], placeholder: "Buscar" %>
-	  <%= submit_tag "Search", class:"btn btn-primary btn-lg" %>
+	  <div class="input-group">
+	  	
+		  <%= text_field_tag :search, params[:search], placeholder: "Buscar", class:"form-control" %>
+		  <span class="input-group-btn">
+		  	
+		  <%= submit_tag "Search", class:"btn btn-primary" %>
+		  </span>
+	  </div>
 	  <% end %>
-	  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" >Busquedas Avanzadas</button>
+	  <br>
+	  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" >Busquedas Avanzadas</button>
 	  <!-- Modal -->
 	  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	    <div class="modal-dialog" role="document">
@@ -100,13 +111,20 @@
 	  <%= link_to "Organizar por fecha" %>
 	  <% if current_user != nil %>
 	  <%= form_tag(pets_path, :method => "get", id: "search_distance-form") do %>
-	  <%= number_field_tag :search_distance, params[:search_distance], placeholder: "Radio de búsqueda km: ∞" %>
-	  <%= hidden_field_tag :lat, current_user.latitude %>
-	  <%= hidden_field_tag :lng, current_user.longitude %>
-	  <%= submit_tag "Cambiar el radio de búsqueda", class:"btn btn-primary btn-lg" %>
+		<div class="input-group">
+			
+		  <%= number_field_tag :search_distance, params[:search_distance], placeholder: "Radio de búsqueda km: ∞", class:"form-control" %>
+		  <%= hidden_field_tag :lat, current_user.latitude %>
+		  <%= hidden_field_tag :lng, current_user.longitude %>
+		  <span class="input-group-btn">
+		  	<%= submit_tag "Cambiar el radio de búsqueda", class:"btn btn-primary" %>
+		  </span>
+		</div>
 	  <% end %>
 	  <% end %>
       </p>
+      	</div>
+      </din>
       <br/>
       <br/>
       </div>
