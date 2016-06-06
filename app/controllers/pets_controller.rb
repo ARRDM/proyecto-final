@@ -5,7 +5,7 @@ class PetsController < ApplicationController
   # GET /pets
   # GET /pets.json
   def index
-    @pets = Pet.all.activos
+    #@pets = Pet.all.activos
     if (params[:aname] != "" && params[:aname] != nil)  ||
        (params[:abreed] != "" && params[:abreed] != nil) ||
        (params[:ahair] != "" && params[:ahair] != nil) ||
@@ -13,25 +13,25 @@ class PetsController < ApplicationController
        (params[:agender] != "" && params[:agender] != nil) ||
        (params[:asize] != "" && params[:asize] != nil) ||
        (params[:adescription] != "" && params[:adescription] != nil)
-      @pets = Pet.all.order('created_at ASC').activos
-      @pets = Pet.busqueda_avanzada(params[:aname],params[:abreed],params[:ahair],params[:aage],params[:agender],params[:asize], params[:adescription]).activos
+      @pets = Pet.all.order('created_at ASC')
+      @pets = Pet.busqueda_avanzada(params[:aname],params[:abreed],params[:ahair],params[:aage],params[:agender],params[:asize], params[:adescription])
       if params[:aradio] != ""
-        @pets = Pet.search_distance(@pets,params[:aradio],params[:lat2],params[:lng2]).activos
+        @pets = Pet.search_distance(@pets,params[:aradio],params[:lat2],params[:lng2])
       end
 
     else
       
       if params[:search]      
-        @pets = Pet.search(params[:search]).order("created_at ASC").activos
+        @pets = Pet.search(params[:search]).order("created_at ASC")
       else
-        @pets = Pet.all.order('created_at ASC').activos
+        @pets = Pet.all.order('created_at ASC')
       end
       if (params[:search_distance] != "" && params[:search_distance] != nil)
-        @pets = Pet.search_distance(@pets,params[:search_distance],params[:lat],params[:lng]).activos
+        @pets = Pet.search_distance(@pets,params[:search_distance],params[:lat],params[:lng])
       else
       end
       if (params[:latitude] != "" && params[:latitude] != nil)
-        @pets = Pet.ordena(@pets,params[:latitude],params[:longitude]).activos
+        @pets = Pet.ordena(@pets,params[:latitude],params[:longitude])
       end
     end
     
@@ -88,7 +88,9 @@ class PetsController < ApplicationController
   # DELETE /pets/1.json
   def destroy
     @message = Message.where(pet_id: @pet.id).first
-    @message.destroy
+    if @message != nil
+      @message.destroy
+    end
     @pet.destroy
     respond_to do |format|
       format.html { redirect_to pets_url, notice: 'Pet was successfully destroyed.' }
