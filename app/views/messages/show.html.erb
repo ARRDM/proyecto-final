@@ -62,8 +62,11 @@
 					<% else %>
 						<div class="row">
 							<div class="col-md-6">
-								<!-- Este link debe actualizar a @pet.status = "y" ESO ES TODO -->
-								<%= link_to "Confirmar adopción", "#", class:"btn btn-block btn-lg btn-success" %>
+							  <!-- Este link debe actualizar a @pet.status = "y" ESO ES TODO -->
+ 							  <%= form_for @pet do |t| %>
+							  <%= t.hidden_field :status, :value => 'y' %>
+							  <%= t.submit "Confirmar adopción", class:"btn btn-blick btn-lg btn-success" %>
+							  <% end %>
 							</div>
 							<div class="col-md-6">
 								<%= link_to "Rechazar petición", @message, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-lg btn-block btn-danger" %>
