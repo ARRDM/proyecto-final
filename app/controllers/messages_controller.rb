@@ -11,6 +11,9 @@ class MessagesController < ApplicationController
   # GET /messages/1
   # GET /messages/1.json
   def show
+    @pet = Pet.find(@message.pet_id)
+    @petitioner = User.find(@message.petitioner)
+    @owner = User.find(@message.owner)
   end
 
   # GET /messages/new
@@ -63,7 +66,12 @@ class MessagesController < ApplicationController
   # DELETE /messages/1
   # DELETE /messages/1.json
   def destroy
+    @pet = Pet.find(@message.pet_id)
+    @pet.status = "n"
+    @pet.requested = false
+    @pet.save
     @message.destroy
+
     respond_to do |format|
       format.html { redirect_to messages_url, notice: 'Message was successfully destroyed.' }
       format.json { head :no_content }

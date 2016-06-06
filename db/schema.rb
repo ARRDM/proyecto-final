@@ -73,11 +73,11 @@ ActiveRecord::Schema.define(version: 20160605004046) do
     t.string   "user_lastname_p"
     t.string   "user_lastname_m"
     t.string   "phone"
+    t.string   "provider"
+    t.string   "uid"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "address"
-    t.string   "provider"
-    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -1,4 +1,79 @@
+<br>
+<br>
+<div class="container">
+	<div class="row">
 <p id="notice"><%= notice %></p>
+		<div class="col-md-8 col-md-offset-2">
+			<div class="well fondo-crema">
+				<div class="row">
+					<div class="col-md-4 text-center">
+						<%= image_tag(@pet.image_url, class:"img-responsive img-circle") %>
+						<h1><%= link_to @pet.name, pet_path(@pet) %></h1>
+						<br>
+						<h3>Registrado por:</h3>
+						<h4><%= link_to @owner.user_name.to_s + " " + @owner.user_lastname_p, profile_path(@owner) %></h4>
+					</div>
+					<div class="col-md-8">
+						<h1>Petición de adopción de <%= link_to  @petitioner.user_name,  profile_path(@petitioner)%></h1>
+						<h3><%= @petitioner.user_name %> dice:</h3>
+						<p><%= @message.text %></p>
+						<br>
+						<h3>Datos de <%= @petitioner.user_name %></h3>
+						<div class="row">
+							<div class="col-md-12">
+								<h4><%= @petitioner.user_name.to_s + " " + @petitioner.user_lastname_p.to_s + " " + @petitioner.user_lastname_m.to_s %></h4>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<h4>Correo:</h4>
+								<p><%= @petitioner.email %></p>
+							</div>
+							<div class="col-md-6">
+								<h4>Teléfono:</h4>
+								<p><%= @petitioner.phone.to_s %></p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<h4>Dirección:</h4>
+								<p><%= @petitioner.address.to_s %></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<% if @pet.status == "y" %>
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3">
+							<a href="#" class="btn btn-block btn-lg btn-success disabled">Aceptada</a>
+						</div>
+					</div>
+				<% else %>
+					<% if @message.petitioner == current_user.id %>
+						<div class="row">
+							<div class="col-md-6">
+								<%= link_to "Espera confirmación", "#", class:"btn btn-block btn-lg btn-default disabled" %>
+							</div>
+							<div class="col-md-6">
+								<%= link_to "Cancelar petición", @message, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-lg btn-block btn-danger" %>
+							</div>
+						</div>
+					<% else %>
+						<div class="row">
+							<div class="col-md-6">
+								<!-- Este link debe actualizar a @pet.status = "y" ESO ES TODO -->
+								<%= link_to "Confirmar adopción", "#", class:"btn btn-block btn-lg btn-success" %>
+							</div>
+							<div class="col-md-6">
+								<%= link_to "Rechazar petición", @message, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-lg btn-block btn-danger" %>
+							</div>
+						</div>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
 
-<%= link_to 'Edit', edit_message_path(@message) %> |
-<%= link_to 'Back', messages_path %>
+
