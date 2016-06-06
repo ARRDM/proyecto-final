@@ -1,28 +1,18 @@
-== README
+#Instalación
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#Configuración del ambiente de desarrollo
+####
 
-Things you may want to cover:
+	$ git clone https://github.com/ARRDM/proyecto-final.git	
 
-* Ruby version
+#Configuración de la base de datos (sqlite3)
 
-* System dependencies
+	$ bundle db:reset
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+####
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+#Ejecución
+
+####
+	$ rails s
