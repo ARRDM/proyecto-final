@@ -10,24 +10,47 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.text_area :text, placeholder: "Tu mensaje aquí", class:"form-control" %>
+<div class="row">
+  <div class="col-md-4 text-center">
+    <%= image_tag(@pet.image_url, class:"img-responsive img-circle") %>
+    <h1><%= link_to @pet.name, pet_path(@pet) %></h1>
+    <br>
   </div>
-  <div class="field">
-    <%= f.hidden_field :status, :value => false %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :petitioner, :value => current_user.id %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :owner, :value => @user.id %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :pet_id, :value => @pet.id %>
+  <div class="col-md-8">
+    <% owner = User.find(@pet.user_id) %>
+    <h1>Petición de adopción para <%= link_to owner.user_name.to_s + " " + owner.user_lastname_p.to_s, profile_path(owner)  %></h1>
+    <br>
+    <div class="field">
+      <h4>Escribe por qué quieres adoptar y qué calidad de vida le brindarás:</h4>
+      <%= f.text_area :text, placeholder: "Tu mensaje aquí", class:"form-control" %>
+    </div>
   </div>
 
+  <div class="col-md-12">
 
-  <div class="actions">
-    <%= f.submit %>
+      <div class="field">
+        <%= f.hidden_field :status, :value => false %>
+      </div>
+      <div class="field">
+        <%= f.hidden_field :petitioner, :value => current_user.id %>
+      </div>
+      <div class="field">
+        <%= f.hidden_field :owner, :value => @user.id %>
+      </div>
+      <div class="field">
+        <%= f.hidden_field :pet_id, :value => @pet.id %>
+      </div>
+    
   </div>
-<% end %>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <%= link_to 'Cancelar petición', messages_path, class:"btn btn-danger btn-lg btn-block" %>
+  </div>
+  <div class="col-md-6">
+    <%= f.submit "Confirmar petición", class:"btn btn-success btn-lg btn-block" %>
+    <% end %>
+  </div>
+</div>
+
+

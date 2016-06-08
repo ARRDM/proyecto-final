@@ -11,7 +11,7 @@
 						<h1><%= link_to @pet.name, pet_path(@pet) %></h1>
 						<br>
 						<h3>Registrado por:</h3>
-						<h4><%= link_to @owner.user_name.to_s + " " + @owner.user_lastname_p, profile_path(@owner) %></h4>
+						<h4><%= link_to @owner.user_name.to_s + " " + @owner.user_lastname_p.to_s, profile_path(@owner) %></h4>
 					</div>
 					<div class="col-md-8">
 						<h1>Petición de adopción de <%= link_to  @petitioner.user_name,  profile_path(@petitioner)%></h1>
@@ -65,7 +65,7 @@
 							  <!-- Este link debe actualizar a @pet.status = "y" ESO ES TODO -->
  							  <%= form_for @pet do |t| %>
 							  <%= t.hidden_field :status, :value => 'y' %>
-							  <%= t.submit "Confirmar adopción", class:"btn btn-blick btn-lg btn-success" %>
+							  <%= t.submit "Confirmar adopción", class:"btn btn-block btn-lg btn-success" %>
 							  <% end %>
 							</div>
 							<div class="col-md-6">
