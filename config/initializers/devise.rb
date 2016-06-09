@@ -146,7 +146,7 @@ Devise.setup do |config|
   # ==> Configuration for :validatable
   # Range for password length.
   config.password_length = 8..72
-  config.password_regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/
+  #config.password_regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/
   #/( (?:(?=.*[a-z]) (?=.*[A-Z]) (?=.*\W) |(?=.*\d)(?=.*[A-Z])(?=.*\W)|(?=.*\d)(?=.*[a-z])(?=.*\W)|(?=.*\d)(?=.*[a-z])(?=.*[A-Z])))/x
   
   
@@ -275,7 +275,7 @@ Devise.setup do |config|
   # config.expire_password_after = false
 
   # Need 1 char of A-Z, a-z and 0-9
-  config.password_regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/
+  #config.password_regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/
 
   # How many passwords to keep in archive
   # config.password_archiving_count = 5

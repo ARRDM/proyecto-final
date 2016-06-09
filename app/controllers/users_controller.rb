@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def update_address
+  def update_address 
     @user = User.find(current_user.id)
     if @user.update(user_params)
       # Sign in the user by passing validation in case their password changed
