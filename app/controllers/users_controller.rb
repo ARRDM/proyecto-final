@@ -1,3 +1,4 @@
+# coding: utf-8
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -31,9 +32,10 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       # Sign in the user by passing validation in case their password changed
       sign_in @user, :bypass => true
-      redirect_to profile_index_path
+      redirect_to edit_user_registration_path      
     else
-      render "edit"
+      flash[:warning] =  "Su nueva contraseña debe tener al menos 8 caracteres que uncluyen un número, una letra y una mayúscula."
+      redirect_to profile_index_path      
     end
   end
 

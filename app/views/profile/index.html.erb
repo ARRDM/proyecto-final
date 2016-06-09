@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container">  
 	<br>
 	<br>
 	<div class="row">
-		<div class="col-md-12">
+	  <div class="col-md-12">
 			<div class="well fondo-crema">
 				<div class="row">
-					<div class="col-md-3 text-center">
+				  <div class="col-md-3 text-center">
 						<% if @user.image != nil %>
 							<%= image_tag(@user.image_url, class:"img-responsive img-circle center-block") %>
 						<% else %>
@@ -30,6 +30,9 @@
 							      <%= f.password_field :password_confirmation %>
 							    </div>
 							    <div class="action_container">
+							      <br/>
+							      <br/>
+							      <h1><%= flash[:warning] %></h1>
 							      <%= f.submit "Crear contraseña" %>
 							    </div>
 							    <% end %>

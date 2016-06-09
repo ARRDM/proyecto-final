@@ -31,7 +31,8 @@ gem 'gmaps4rails'
 # Use to connect with facebook
 gem 'omniauth'
 gem 'omniauth-facebook'
-
+gem 'devise_security_extension'
+gem 'rails_email_validator'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

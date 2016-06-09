@@ -1,6 +1,8 @@
+# coding: utf-8
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  validates :password, :format => {:with => /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/, message: "Tiene que tener al menos 8 caracteres, una letra y una letra en mayúscula."}
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :pets
